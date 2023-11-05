@@ -1,0 +1,26 @@
+{
+  "name": "csv-pipe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/myroslavmartsin/csv-pipe.git"
+  },
+  "author": "Myroslav Martsin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/myroslavmartsin/csv-pipe/issues"
+  },
+  "homepage": "https://github.com/myroslavmartsin/csv-pipe#readme",
+  "devDependencies": {
+    "prettier": "3.0.3",
+    "ts-loader": "^9.5.0",
+    "typescript": "^5.2.2"
+  }
+}
