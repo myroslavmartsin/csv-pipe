@@ -4,8 +4,9 @@
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "type": "module",
   "scripts": {
-    "build": "rm -rf dist && tsc",
+    "build": "rm -rf dist && esbuild index.ts --bundle --outdir=dist --minify --format=esm && tsc --declaration --emitDeclarationOnly",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -29,6 +30,7 @@
     "javascript"
   ],
   "devDependencies": {
+    "esbuild": "^0.19.5",
     "prettier": "3.0.3",
     "typescript": "^5.2.2"
   }
