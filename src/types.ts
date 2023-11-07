@@ -25,7 +25,15 @@ export type CpRow<T = any> = {
 export type CpDataset = CpRow[];
 
 export abstract class CpDownloader {
-  abstract downloadCsv(filename?: string): void;
+  public abstract download(filename?: string): void;
+}
 
-  abstract downloadTxt(filename?: string): void;
+export type CpFileType = 'csv' | 'txt';
+
+export abstract class CpGenerationResult {
+  public abstract get charset(): string;
+
+  public abstract get filename(): string;
+
+  public abstract get data(): string;
 }

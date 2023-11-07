@@ -1,19 +1,24 @@
 import { CP_DEFAULT_CONFIG } from './config';
-import { CpConfig, CpValue, CpDataset, CpDownloader, CpRow } from './types';
-import { CsvDownloader } from './downloader';
+import {
+  CpConfig,
+  CpValue,
+  CpDataset,
+  CpRow,
+  CpGenerationResult
+} from './types';
 import { CpUtils } from './utils';
 
 export class CsvPipe {
-  private config: Required<CpConfig> = CP_DEFAULT_CONFIG;
+  private _config: Required<CpConfig> = CP_DEFAULT_CONFIG;
 
-  constructor(_config: CpConfig) {
-    this.config = { ...this.config, ..._config };
+  constructor(config: CpConfig) {
+    this._config = { ...this._config, ...config };
   }
 
-  public generate(dataset: CpDataset): CpDownloader {
+  public generate(dataset: CpDataset): CpGenerationResult {
     const rows: string[] = [];
 
-    const _config: Required<CpConfig> = this.config;
+    const _config: Required<CpConfig> = this._config;
 
     dataset.forEach((data: CpRow) => {
       const row: string[] = [];
@@ -39,14 +44,39 @@ export class CsvPipe {
 
     csvPayload = `${csvPayload}${_sRows}`;
 
-    return new CsvDownloader(csvPayload, _config);
+    return new GenerationResult(this._config, csvPayload);
+  }
+
+  public get filename(): string {
+    return this._config.filename;
   }
 
   private getHeaders(row: CpRow): string {
-    if (this.config.autoHeaders) {
-      return Object.keys(row).join(this.config.separator);
+    if (this._config.autoHeaders) {
+      return Object.keys(row).join(this._config.separator);
     }
 
-    return this.config.headers.join(this.config.separator);
+    return this._config.headers.join(this._config.separator);
+  }
+}
+
+class GenerationResult extends CpGenerationResult {
+  constructor(
+    public config: Required<CpConfig>,
+    private _csvPayload: string
+  ) {
+    super();
+  }
+
+  public get charset(): string {
+    return this.config.charset;
+  }
+
+  public get filename(): string {
+    return this.config.filename;
+  }
+
+  public get data(): string {
+    return this._csvPayload;
   }
 }
