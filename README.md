@@ -15,7 +15,7 @@ This section is dedicated to helping you integrate CSV-Pipe into your project wi
 #### Front-end
 
 ```typescript
-import { CsvPipe, cpDownload } from 'csv-pipe';
+import { CsvPipe, CpDataset, cpDownload } from 'csv-pipe';
 
 // Instantiate CsvPipe with configuration options
 const csvPipe = new CsvPipe({
