@@ -18,15 +18,9 @@ type PrimitiveData = string | number | boolean | null | undefined;
 
 export type CpValue = PrimitiveData[] | PrimitiveData;
 
-export type CpRow<T = any> = {
-  [K in keyof T]: CpValue;
-};
+export type CpRow<T = any> = Record<keyof T, CpValue>;
 
-export type CpDataset = CpRow[];
-
-export abstract class CpDownloader {
-  public abstract download(filename?: string): void;
-}
+export type CpDataset<T = unknown> = CpRow<T>[];
 
 export type CpFileType = 'csv' | 'txt';
 
