@@ -20,7 +20,7 @@ import { CsvPipe, CpDataset, cpDownload } from 'csv-pipe';
 // Instantiate CsvPipe with configuration options
 const csvPipe = new CsvPipe({
   filename: 'active_users_october', // Optional: Specify file name
-  headers: ['Name', 'Age', 'Email'] // Optional: Specify CSV column headers
+  headers: ['Name', 'Email', 'Age'] // Optional: Specify CSV column headers
 });
 
 const data: CpDataset = [
@@ -52,7 +52,7 @@ import { writeFile } from 'fs';
 // Instantiate CsvPipe with configuration options
 const csvPipe = new CsvPipe({
   filename: 'active_users_october', // Optional: Specify file name
-  headers: ['Name', 'Age', 'Email'] // Optional: Specify CSV column headers
+  headers: ['Name', 'Email', 'Age'] // Optional: Specify CSV column headers
 });
 
 const data = [
